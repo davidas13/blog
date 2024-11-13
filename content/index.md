@@ -1,23 +1,20 @@
 ---
 title: Home
-tags:
-  - "#Obsidian"
-  - "#Quartz"
-  - 🌏Content/Main
-aliases:
-  - Home
-  - Homepage
-  - Home page
-created: 2024-10-19T06:08
-modified: 2024-10-24T09:57
-description: Homepage
+tags: ['🌏Content/Main']
+aliases: ['Home', 'Homepage', 'Home page']
+date: 2024-11-14T02:55
+description: Homepage 
 publish: true
 ---
 
-Halo, saya [[David]], dan selamat datang..
+*Bismillahirrahmanirrahim*
 
-Ini adalah media tempat saya menulis sebuah catatan personal dan dokumentasi belajar. Hasil tulisan saya disini akan saya perbarui setiap waktu.
+Halo, saya [[About Me|David]], saya seseorang yang senang mengeksplorasi berbagai hal tentang teknologi.
 
-Saat ini saya sedang,
+Ini adalah tempat di mana saya membagikan catatan pribadi dan dokumentasi belajar yang saya kumpulkan dari waktu ke waktu.
 
-...
+Catatan di sini akan terus saya perbarui secara berkala. Berikut beberapa halaman yang dapat dikunjungi:
+- [[posts/index.md|Posts]]
+- [[projects/index.md|Projects]]
+- [[notes/index.md|Notes]]
+- [[Personal Changelog.md|Personal Changelog]]
