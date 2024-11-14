@@ -43,6 +43,18 @@ publish: {publish}
 SUPPORTED_NOTE_EXT = ".md"
 
 
+# Source: https://www.w3resource.com/python-exercises/string/python-data-type-string-exercise-97.php
+# Define a function to convert a string to snake case
+def snake_case(s):
+    # Replace hyphens with spaces, then apply regular expression substitutions for title case conversion
+    # and add an underscore between words, finally convert the result to lowercase
+    return "_".join(
+        re.sub(
+            "([A-Z][a-z]+)", r" \1", re.sub("([A-Z]+)", r" \1", s.replace("-", " "))
+        ).split()
+    ).lower()
+
+
 # List of mandatory properties.
 class Property:
     title = "title"
@@ -206,9 +218,10 @@ if __name__ == "__main__":
                         os.path.dirname(published_filepath), publish_location
                     )
 
+                published_filename = snake_case(os.path.basename(published_filepath))
                 published_filepath = os.path.join(
                     os.path.dirname(published_filepath),
-                    os.path.basename(published_filepath).lower().replace(" ", "-"),
+                    published_filename,
                 )
 
                 os.makedirs(os.path.dirname(published_filepath), exist_ok=True)
@@ -261,6 +274,19 @@ if __name__ == "__main__":
                         link_publish_location = link_note_frontmatter.get(
                             "publish-location"
                         )
+                        link_alias = link_note_frontmatter.get("link-alias", False)
+
+                        if link_publish_location in (
+                            None,
+                            "",
+                            ".",
+                        ):
+                            link_basename, link_extention = os.path.splitext(
+                                os.path.basename(link_filepath)
+                            )
+                            link_publish_location = (
+                                snake_case(link_basename) + link_extention
+                            )
 
                         # Replace all original obsidian link paths to match the publish structure.
                         note_content = re.sub(
@@ -270,7 +296,7 @@ if __name__ == "__main__":
                             ),
                             "[[{path}|{alias}]]".format(
                                 path=link_publish_location,
-                                alias=link_title,
+                                alias=alias if link_alias else link_title,
                             ),
                             note_content,
                             1,
